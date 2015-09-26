@@ -48,13 +48,8 @@ class ContainerResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        $faker = \Faker\Factory::create();
-
-        return [
-            'container' => '1234',
-            'latitude' => $faker->latitude,
-            'longitude' => $faker->longitude,
-        ];
+        $cs = new \Bgphp\ContainerService();
+        return $cs->fetch($id);
     }
 
     /**
