@@ -13,6 +13,7 @@ Class ContainerService
             'container' => $id,
             'latitude' => $faker->latitude,
             'longitude' => $faker->longitude,
+            'destination' => $faker->countryCode,
         ];
     }
 
