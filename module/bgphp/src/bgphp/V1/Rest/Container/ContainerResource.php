@@ -15,7 +15,8 @@ class ContainerResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        return new ApiProblem(405, 'The POST method has not been defined');
+        $sc = new \Bgphp\ContainerService();
+        $sc->store($data);
     }
 
     /**

@@ -9,6 +9,11 @@ class ShippingConnector
     /** @var \PDO The PDO abstract */
     protected $pdo;
 
+    function __construct(\PDO $pdo)
+    {
+        $this->setPdo($pdo);
+    }
+
     /**
      * @return \PDO
      */
@@ -29,7 +34,7 @@ class ShippingConnector
 
     public function find($id)
     {
-        if (false === ($stmt = $this->getPdo()->prepare('SELECT * FROM container ORDER BY timestamp DESC WHERE id = ?'))) {
+        if (false === ($stmt = $this->getPdo()->prepare('SELECT * FROM container WHERE id = ? ORDER BY timestamp DESC'))) {
             throw new \DomainException('Cannot prepare the request: ' . implode(' - ', $this->getPdo()->errorInfo()));
         }
         $stmt->bindParam(1, $id);
